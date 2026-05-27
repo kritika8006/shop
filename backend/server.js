@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path'); // Added for serving static path directories
 require('dotenv').config();
 
 const Item = require('./models/Item');
@@ -85,6 +86,17 @@ app.delete('/api/items/:id', async (req, res) => {
   }
 });
 
+// --- FRONTEND STATIC SERVING ---
+
+// Serve frontend static assets from the production build folder
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Handle any client-side routing requests by sending back React's index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
+
+// --- SERVER INITIALIZATION ---
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
