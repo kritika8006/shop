@@ -13,7 +13,8 @@ function App() {
   const [editingItemId, setEditingItemId] = useState(null);
   const [editPriceValue, setEditPriceValue] = useState('');
 
-  const API_URL = 'http://localhost:5000/api/items';
+  // FIX: Localhost URL hata kar ise relative path banaya production deployment ke liye
+  const API_URL = '/api/items';
 
   useEffect(() => {
     fetchItems();
