@@ -1,0 +1,161 @@
+/* Modern Reset & Base Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  color: #333;
+  padding-bottom: 60px;
+}
+
+/* Container Customization */
+div[style*="max-width"] {
+  max-width: 800px !important;
+  margin: 50px auto !important;
+  background: #ffffff;
+  padding: 40px !important;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 30px !important;
+  letter-spacing: -0.5px;
+}
+
+/* Inputs & Form Layout */
+input[type="text"], input[type="number"], select {
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: #4f46e5;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* Top Large Search Bar Specifics */
+input[placeholder*="Search"] {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  font-size: 1.05rem;
+}
+
+/* Form Panel Style */
+form {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  gap: 12px !important;
+  align-items: center;
+}
+
+/* Global Button Interactive Styling */
+button {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Button Colors */
+button[type="submit"] {
+  background-color: #4f46e5 !important;
+  color: white !important;
+}
+button[type="submit"]:hover { background-color: #4338ca !important; }
+
+button[style*="background-color: rgb(40, 167, 69)"] { /* Save */
+  background-color: #10b981 !important;
+}
+button[style*="background-color: rgb(40, 167, 69)"]:hover { background-color: #059669 !important; }
+
+button[style*="background-color: rgb(108, 117, 125)"] { /* Cancel */
+  background-color: #94a3b8 !important;
+}
+button[style*="background-color: rgb(108, 117, 125)"]:hover { background-color: #64748b !important; }
+
+button[style*="background-color: rgb(255, 193, 7)"] { /* Edit */
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+button[style*="background-color: rgb(255, 193, 7)"]:hover { background-color: #d97706 !important; }
+
+button[style*="background-color: rgb(220, 53, 69)"] { /* Delete */
+  background-color: #ef4444 !important;
+}
+button[style*="background-color: rgb(220, 53, 69)"]:hover { background-color: #dc2626 !important; }
+
+
+/* Elegant Table Architecture */
+div[style*="box-shadow"] {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+table {
+  border-collapse: separate !important;
+}
+
+th {
+  background-color: #f8fafc !important;
+  color: #64748b !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+td {
+  padding: 16px 20px !important;
+  color: #334155;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none !important;
+}
+
+tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Subtle Unit Label Accentuation */
+td span {
+  font-variant-numeric: tabular-nums;
+}
+
+td span:contains("/") {
+  color: #64748b;
+  font-size: 0.9rem;
+}
