@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // Added for serving static path directories
+const path = require('path'); // Core module for handling file directories cleanly
 require('dotenv').config();
 
 const Item = require('./models/Item');
@@ -88,12 +88,14 @@ app.delete('/api/items/:id', async (req, res) => {
 
 // --- FRONTEND STATIC SERVING ---
 
-// Serve frontend static assets from the production build folder
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+// 1. Serve static production files from the React dist directory
+app.use(express.static(path.resolve(__dirname, '../frontend/dist')));
 
-// Handle any client-side routing requests by sending back React's index.html file
+// 2. Handle wildcards cleanly without interfering with /api/ requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  if (!req.url.startsWith('/api/')) {
+    res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
+  }
 });
 
 // --- SERVER INITIALIZATION ---
