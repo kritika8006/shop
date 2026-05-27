@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // Core module for handling file directories cleanly
+const path = require('path');
 require('dotenv').config();
 
 const Item = require('./models/Item');
@@ -91,11 +91,9 @@ app.delete('/api/items/:id', async (req, res) => {
 // 1. Serve static production files from the React dist directory
 app.use(express.static(path.resolve(__dirname, '../frontend/dist')));
 
-// 2. Handle wildcards cleanly without interfering with /api/ requests
-app.get('*', (req, res) => {
-  if (!req.url.startsWith('/api/')) {
-    res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
-  }
+// 2. Ultimate Bulletproof Route - No regex, no wildcards to break path-to-regexp
+app.get('(.*)', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
 });
 
 // --- SERVER INITIALIZATION ---
