@@ -86,14 +86,18 @@ app.delete('/api/items/:id', async (req, res) => {
   }
 });
 
-// --- FRONTEND STATIC SERVING ---
+// --- FRONTEND STATIC SERVING (CRASH-PROOF VERSION) ---
 
-// 1. Serve static production files from the React dist directory
+// 1. Static files folder config
 app.use(express.static(path.resolve(__dirname, '../frontend/dist')));
 
-// 2. Ultimate Bulletproof Route - No regex, no wildcards to break path-to-regexp
-app.get('(.*)', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
+// 2. Catch-all fallback using native Express middleware instead of app.get('*')
+app.use((req, res, next) => {
+  // Agar request API ki nahi hai, toh React ki index.html send karo
+  if (!req.url.startsWith('/api/')) {
+    return res.sendFile(path.resolve(__dirname, '../frontend/dist', 'index.html'));
+  }
+  next();
 });
 
 // --- SERVER INITIALIZATION ---
